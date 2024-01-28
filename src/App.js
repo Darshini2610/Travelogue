@@ -1,7 +1,16 @@
+import ExperienceForm from "./components/ExperienceForm";
+import ExperienceCard from "./components/ExperienceCard";
+import {Route, Routes, BrowserRouter } from 'react-router-dom'
+
 function App() {
   return (
     <div className="App text-center">
-      <h1 className="font-Playfair text-6xl m-32">Travelogue</h1>
+      <BrowserRouter>
+      <Routes>
+        <Route path = '/' Component={ExperienceCard} />
+        <Route path = '/AddCard' Component={ExperienceForm} />
+      </Routes>
+      </BrowserRouter>
     </div>
   );
 }

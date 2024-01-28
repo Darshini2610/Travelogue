@@ -1,7 +1,8 @@
 // ExperienceForm.js
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const ExperienceForm = ({ onAddExperience }) => {
+const ExperienceForm = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
@@ -11,16 +12,25 @@ const ExperienceForm = ({ onAddExperience }) => {
     setImage(selectedImage);
   };
 
+  const navigate = useNavigate()
+  const handleSubmit = () => {
+    navigate('/')    
+  };
+
+
   return (
-    <form className="max-w-md mx-auto mt-8 p-4 bg-white shadow-md rounded-lg border-2">
-      <label className="block text-gray-700 text-sm font-semibold mb-2">
+    <div className="grid place-items-center">
+      <h1 className="font-Playfair text-4xl mt-14">Travelogue</h1>
+      <h1 className="font-GV mt-10 text-3xl">Create lasting memories that will be cherished forever!</h1>
+    <form className="max-w-md mx-auto mt-8 p-4 h-full bg-white shadow-md rounded-lg border-2">
+      <label className="block text-gray-700 text-sm font-semibold mb-2 mt-4">
         Title:
       </label>
       <input
         type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-teal-500"
+        className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-amber-950"
         required
       />
 
@@ -30,7 +40,7 @@ const ExperienceForm = ({ onAddExperience }) => {
       <textarea
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-teal-500"
+        className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-amber-950"
         required
       />
 
@@ -41,16 +51,18 @@ const ExperienceForm = ({ onAddExperience }) => {
         type="file"
         onChange={handleImageChange}
         accept="image/*"
-        className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-teal-500"
+        className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-amber-950"
       />
 
       <button
         type="submit"
-        className="mt-4 bg-teal-500 text-white py-2 px-4 rounded"
+        className="mt-8 bg-amber-950 text-white py-2 px-4 rounded hover:border-2 hover:border-double"
+        onClick={handleSubmit}
       >
-        Add Experience
+        Add Memory
       </button>
     </form>
+    </div>
   );
 };
 
