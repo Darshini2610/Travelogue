@@ -14,7 +14,7 @@ const UpdateExperienceForm = () => {
     // Fetch the memory details based on the ID
     const fetchMemoryDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/memories/${id}`);
+        const response = await axios.get(`http://192.168.131.168:5000/memories/${id}`);
         const memory = response.data;
 
         // Set the state with the fetched memory details
@@ -37,7 +37,7 @@ const UpdateExperienceForm = () => {
         imageName,
       };
 
-      await axios.put(`http://localhost:5000/memories/${id}`, formData, {
+      await axios.put(`http://192.168.131.168:5000/memories/${id}`, formData, {
         headers: {
           "Content-Type": "application/json",
         },

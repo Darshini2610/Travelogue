@@ -20,7 +20,10 @@ connection.once('open', () => {
 });
 
 // Enable CORS for all routes
-app.use(cors());
+app.use(cors({
+    origin: 'http://192.168.131.173:3000',
+    optionsSuccessStatus: 200,
+}));
 
 // Use JSON middleware
 app.use(express.json());
@@ -30,5 +33,6 @@ app.use('/', memoriesRouter);
 
 // Start the server
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on http://192.168.131.168:${PORT}`);
 });
+

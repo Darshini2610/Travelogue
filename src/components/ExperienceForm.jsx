@@ -16,7 +16,7 @@ const ExperienceForm = () => {
       formData.append('description', description);
       formData.append('image', image);
 
-      await axios.post("http://localhost:5000/memories", formData);
+      await axios.post("192.168.131.168:5000/memories", formData);
 
       navigate("/");
     } catch (error) {
