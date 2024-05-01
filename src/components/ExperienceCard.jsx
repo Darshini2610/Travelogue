@@ -9,7 +9,7 @@ const ExperienceCard = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://192.168.131.168:5000/memories");
+      const response = await axios.get("http://localhost:5000/memories");
       setCards(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -26,7 +26,7 @@ const ExperienceCard = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://192.168.131.168:5000/memories/${id}`);
+      await axios.delete(`http://localhost:5000/memories/${id}`);
       fetchData();
     } catch (error) {
       console.error("Error deleting memory:", error);

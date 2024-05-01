@@ -21,7 +21,7 @@ connection.once('open', () => {
 
 // Enable CORS for all routes
 app.use(cors({
-    origin: 'http://192.168.131.173:3000',
+    origin: 'http://localhost:3000',
     optionsSuccessStatus: 200,
 }));
 
@@ -33,6 +33,6 @@ app.use('/', memoriesRouter);
 
 // Start the server
 app.listen(PORT, () => {
-    console.log(`Server is running on http://192.168.131.168:${PORT}`);
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
 
