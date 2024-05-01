@@ -1,4 +1,4 @@
-const axios = require('axios');
+const axios = require("axios");
 
 // Function to calculate the average time difference
 const calculateAverageTimeDifference = (timeDifferences) => {
@@ -12,25 +12,19 @@ const synchronizeClocks = async () => {
     // Get current timestamp
     const localTime = Date.now();
 
-    // Get timestamps from all servers
-    const serverTimestamps = await axios.get('http://localhost:5000/clock');
+    // Get server timestamp
+    const response = await axios.get("http://localhost:5000/clock");
+    const serverTime = response.data.timestamp;
 
-    // Calculate time differences
-    const timeDifferences = serverTimestamps.data.map(serverTimestamp => {
-      const serverTime = serverTimestamp.timestamp;
-      return localTime - serverTime;
-    });
+    // Calculate time difference
+    const timeDifference = localTime - serverTime;
 
-    // Calculate average time difference
-    const averageTimeDifference = calculateAverageTimeDifference(timeDifferences);
-
-    // Update local clock by adjusting with the average time difference
-    const newLocalTime = localTime - averageTimeDifference;
-
-    console.log(`Local time adjusted by ${averageTimeDifference} milliseconds.`);
+    // Update local clock by adjusting with the time difference
+    const newLocalTime = localTime - timeDifference;
+    console.log(`Local time adjusted by ${timeDifference} milliseconds.`);
     console.log(`New local time: ${new Date(newLocalTime)}`);
   } catch (error) {
-    console.error('Error synchronizing clocks:', error);
+    console.error("Error synchronizing clocks:", error);
   }
 };
 
